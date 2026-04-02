@@ -15,7 +15,7 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: [...legacyDisallow],
     },
-    sitemap: "https://www.prisma.io/sitemap.xml",
+    sitemap: `${getBaseUrl()}/sitemap.xml`,
     host: baseUrl,
   };
 }
