@@ -1,4 +1,4 @@
-import { source, sourceV6 } from "@/lib/source";
+import { source } from "@/lib/source";
 import { getBaseUrl, withDocsBasePath } from "@/lib/urls";
 
 export const revalidate = false;
@@ -6,9 +6,6 @@ export const revalidate = false;
 export async function GET() {
   const baseUrl = getBaseUrl();
   const latestPages = source
-    .getPages()
-    .sort((a, b) => a.data.title.localeCompare(b.data.title));
-  const v6Pages = sourceV6
     .getPages()
     .sort((a, b) => a.data.title.localeCompare(b.data.title));
 
@@ -22,29 +19,15 @@ export async function GET() {
     })
     .join("\n");
 
-  const v6DocsList = v6Pages
-    .map((page) => {
-      const title = page.data.title;
-      const description = page.data.description || "";
-      const path = `${baseUrl}${withDocsBasePath(page.url)}`;
-
-      return `- [\`${title}\`](${path}): ${description}`;
-    })
-    .join("\n");
-
   const content = `# Prisma Documentation
 
-> This documentation covers Prisma v7 (current) and v6 (legacy).
-> Prefer the Latest section for current recommendations.
+> This documentation covers the current docs plus legacy v6 pages.
+> Prefer the Latest ORM section for current recommendations.
 > v6 pages are maintained for backwards compatibility only.
 
 ## Latest
 
 ${latestDocsList}
-
-## v6
-
-${v6DocsList}
 
 ## Options
 

@@ -1,11 +1,11 @@
 import { getBaseUrl, withDocsBasePath } from '@/lib/urls';
 import type { InferPageType } from 'fumadocs-core/source';
-import type { source, sourceV6 } from '@/lib/source';
+import type { source } from '@/lib/source';
 import { JsonLd } from '@prisma-docs/ui/components/json-ld';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
-type DocsPage = InferPageType<typeof source> | InferPageType<typeof sourceV6>;
+type DocsPage = InferPageType<typeof source>;
 
 interface StructuredDataProps {
   page: DocsPage;
