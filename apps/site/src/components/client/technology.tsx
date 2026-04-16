@@ -21,11 +21,11 @@ export const Technology = ({
       <Tooltip>
         <TooltipTrigger asChild>
           <Button
-            href={url}
+            asChild
             variant="default-stronger"
             className="font-sans-display! font-normal! text-base! font-mono! w-[75px]! h-[75px]!"
           >
-            {children}
+            <a href={url}>{children}</a>
           </Button>
         </TooltipTrigger>
         <TooltipContent>{text}</TooltipContent>
